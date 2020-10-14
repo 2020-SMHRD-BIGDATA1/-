@@ -37,6 +37,7 @@ create table LS53(
 	TM date,
 	LSHOULDER NUMBER(15)
 )
+<<<<<<< HEAD
 
 
 
@@ -54,6 +55,28 @@ SELECT * FROM CS5 WHERE ROWNUM<=5
 select TM from CS5 where ID='a' and ROWNUM<=5 ORDER BY TM  DESC
 SELECT * FROM CS5 WHERE ROWNUM<= 
 select CSPINE from CS5 where ID='a' and ROWNUM<=5 ORDER BY TM DESC
+=======
+>>>>>>> refs/remotes/origin/master
 
+<<<<<<< HEAD
+=======
+
+
+drop table LS5
+select ID from Mem
+select * from LS5
+insert into LS53 values('a','2020-09-21','1')
+insert into LS5 values('a','2020-09-22','2')
+insert into LS5 values('a','2020-09-23','3')
+insert into LS5 values('a','2020-09-24','4')
+insert into LS5 values('a','2020-09-25','5')
+insert into LS5 values('a','2020-09-26','6')
+insert into LS5 values('a','2020-09-27','7')
+SELECT * FROM CS5 WHERE ROWNUM<=5
+select TM from CS5 where ID='a' and ROWNUM<=5 ORDER BY TM  DESC
+SELECT * FROM CS5 WHERE ROWNUM<= 
+select CSPINE from CS5 where ID='a' and ROWNUM<=5 ORDER BY TM DESC
+
+>>>>>>> refs/remotes/origin/master
 select * from CS5 where ROW
 (SELECT * FROM CS5 where ID='a' ORDER BY TM DESC)
