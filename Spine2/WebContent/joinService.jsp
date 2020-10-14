@@ -20,7 +20,7 @@
 		int cnt=dao.join(dto);
 	%>
 	<script>
-		if(<%=cnt>0%>){
+		if(<%=cnt > 0%>){
 			opener.location.reload();
 			window.close('joinService.jsp');
 			/* window.location.href='Main.jsp'; */

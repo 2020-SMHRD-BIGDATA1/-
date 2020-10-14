@@ -16,7 +16,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="home.jsp">Spectral</a></h1>
+						<h1><a href="home.jsp">BONEKEEPER</a></h1>
 						<nav id="nav">
 							<ul>
 								<li class="special">
