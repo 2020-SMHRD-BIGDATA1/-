@@ -38,7 +38,6 @@ public class MemDTO {
 	}
 	public void setSex(String sex) {
 		this.sex = sex;
-	}
-	
+	}	
 	
 }

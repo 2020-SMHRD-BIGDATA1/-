@@ -1,8 +1,11 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.model.MemDAO"%>
+<%@page import="com.model.MemDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-	<head>
+	<head>  
 		<title>Elements - Spectral by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -10,13 +13,35 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
+	
+	
+	
+	
+	<%	
+	String rud = null;
+	String gbd = null;
+	String dy = null;
+	String Lrus = null;
+	String Rrus = null;
+	MemDTO info = (MemDTO)session.getAttribute("info");
+	String loginfail=(String)session.getAttribute("loginfail");
+	MemDAO dao = new MemDAO();
+	
+	%>
+	
+	
+	
+	
+	
+	
+	
 
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="home.jsp">BONEKEEPER</a></h1>
+						<h1><a href="home.jsp">Spectral</a></h1>
 						<nav id="nav">
 							<ul>
 								<li class="special">
@@ -38,318 +63,216 @@
 				<!-- Main -->
 					<article id="main">
 						<header>
-							<h2>Elements</h2>
-							<p>Aliquam ut ex ut interdum donec amet imperdiet eleifend</p>
+							<canvas id="chart-area" style="display: block; height: 256px; width: 512px;" width="512" height="256" class="chartjs-render-monitor"></canvas>
 						</header>
 						<section class="wrapper style5">
 							<div class="inner">
+									<canvas id="chart1" width="50%" height="300" class="chartjs-render-monitor" style="display: block;"></canvas>
 
-								<section>
-									<h4>Text</h4>
-									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-									<hr />
-									<header>
-										<h4>Heading with a Subtitle</h4>
-										<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-									</header>
-									<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-									<header>
-										<h5>Heading with a Subtitle</h5>
-										<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-									</header>
-									<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-									<hr />
-									<h2>Heading Level 2</h2>
-									<h3>Heading Level 3</h3>
-									<h4>Heading Level 4</h4>
-									<h5>Heading Level 5</h5>
-									<h6>Heading Level 6</h6>
-									<hr />
-									<h5>Blockquote</h5>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-									<h5>Preformatted</h5>
-									<pre><code>i = 0;
+							</div>
+						</section>
+						<section class="wrapper style5">
+							<div class="inner">
+							
+							
+							
+							
+							<table class="type07">
+    <thead>
 
-while (!deck.isInOrder()) {
-  print 'Iteration ' + i;
-  deck.shuffle();
-  i++;
-}
+		
 
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-								</section>
+    <tr>
+    	
+    <script type="text/javascript">
+	<%if (info != null) {%>
+		<%
+		
+		ArrayList<String> list=dao.BDATE(info.getId());%>
+		var bdate=[];
+		<% for(int i=0; i<list.size(); i++){%>
+		bdate.push('<%= list.get(i) %>');
+		<% } %>
+			document.write("<th scope='cols'>/</th>")
+		for(var i=bdate.length; i>(bdate.length-5); i--){
+			document.write("<th scope='cols'>")
+			document.write(bdate[i-1])
+			document.write("</th>")
+		}
+			document.write("<th scope='cols'>결과</th>")
+<%	}%>
+	
+			
+		
+	</script>
+    	
+    
+        
+        
+       
+        
+    
+    
+        
+        
 
-								<section>
-									<h4>Lists</h4>
-									<div class="row">
-										<div class="col-6 col-12-medium">
-											<h5>Unordered</h5>
-											<ul>
-												<li>Dolor pulvinar etiam.</li>
-												<li>Sagittis adipiscing.</li>
-												<li>Felis enim feugiat.</li>
-											</ul>
-											<h5>Alternate</h5>
-											<ul class="alt">
-												<li>Dolor pulvinar etiam.</li>
-												<li>Sagittis adipiscing.</li>
-												<li>Felis enim feugiat.</li>
-											</ul>
-										</div>
-										<div class="col-6 col-12-medium">
-											<h5>Ordered</h5>
-											<ol>
-												<li>Dolor pulvinar etiam.</li>
-												<li>Etiam vel felis viverra.</li>
-												<li>Felis enim feugiat.</li>
-												<li>Dolor pulvinar etiam.</li>
-												<li>Etiam vel felis lorem.</li>
-												<li>Felis enim et feugiat.</li>
-											</ol>
-											<h5>Icons</h5>
-											<ul class="icons">
-												<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-												<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-												<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-											</ul>
-										</div>
-									</div>
-									<h5>Actions</h5>
-									<div class="row">
-										<div class="col-6 col-12-medium">
-											<ul class="actions">
-												<li><a href="#" class="button primary">Default</a></li>
-												<li><a href="#" class="button">Default</a></li>
-											</ul>
-											<ul class="actions small">
-												<li><a href="#" class="button primary small">Small</a></li>
-												<li><a href="#" class="button small">Small</a></li>
-											</ul>
-											<ul class="actions stacked">
-												<li><a href="#" class="button primary">Default</a></li>
-												<li><a href="#" class="button">Default</a></li>
-											</ul>
-											<ul class="actions stacked">
-												<li><a href="#" class="button primary small">Small</a></li>
-												<li><a href="#" class="button small">Small</a></li>
-											</ul>
-										</div>
-										<div class="col-6 col-12-medium">
-											<ul class="actions stacked">
-												<li><a href="#" class="button primary fit">Default</a></li>
-												<li><a href="#" class="button fit">Default</a></li>
-											</ul>
-											<ul class="actions stacked">
-												<li><a href="#" class="button primary small fit">Small</a></li>
-												<li><a href="#" class="button small fit">Small</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-
-								<section>
-									<h4>Table</h4>
-									<h5>Default</h5>
-									<div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-
-									<h5>Alternate</h5>
-									<div class="table-wrapper">
-										<table class="alt">
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-								</section>
-
-								<section>
-									<h4>Buttons</h4>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Primary</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button large">Large</a></li>
-										<li><a href="#" class="button">Default</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-									<ul class="actions fit">
-										<li><a href="#" class="button fit">Fit</a></li>
-										<li><a href="#" class="button primary fit">Fit</a></li>
-										<li><a href="#" class="button fit">Fit</a></li>
-									</ul>
-									<ul class="actions fit small">
-										<li><a href="#" class="button primary fit small">Fit + Small</a></li>
-										<li><a href="#" class="button fit small">Fit + Small</a></li>
-										<li><a href="#" class="button primary fit small">Fit + Small</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
-										<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-									</ul>
-									<ul class="actions">
-										<li><span class="button primary disabled">Disabled</span></li>
-										<li><span class="button disabled">Disabled</span></li>
-									</ul>
-								</section>
-
-								<section>
-									<h4>Form</h4>
-									<form method="post" action="#">
-										<div class="row gtr-uniform">
-											<div class="col-6 col-12-xsmall">
-												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-											</div>
-											<div class="col-6 col-12-xsmall">
-												<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-											</div>
-											<div class="col-12">
-												<select name="demo-category" id="demo-category">
-													<option value="">- Category -</option>
-													<option value="1">Manufacturing</option>
-													<option value="1">Shipping</option>
-													<option value="1">Administration</option>
-													<option value="1">Human Resources</option>
-												</select>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-												<label for="demo-priority-low">Low</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="demo-priority-normal" name="demo-priority">
-												<label for="demo-priority-normal">Normal</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="demo-priority-high" name="demo-priority">
-												<label for="demo-priority-high">High</label>
-											</div>
-											<div class="col-6 col-12-small">
-												<input type="checkbox" id="demo-copy" name="demo-copy">
-												<label for="demo-copy">Email me a copy</label>
-											</div>
-											<div class="col-6 col-12-small">
-												<input type="checkbox" id="demo-human" name="demo-human" checked>
-												<label for="demo-human">Not a robot</label>
-											</div>
-											<div class="col-12">
-												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-											</div>
-											<div class="col-12">
-												<ul class="actions">
-													<li><input type="submit" value="Send Message" class="primary" /></li>
-													<li><input type="reset" value="Reset" /></li>
-												</ul>
-											</div>
-										</div>
-									</form>
-								</section>
-
-								<section>
-									<h4>Image</h4>
-									<h5>Fit</h5>
-									<div class="box alt">
-										<div class="row gtr-50 gtr-uniform">
-											<div class="col-12"><span class="image fit"><img src="images/banner.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-										</div>
-									</div>
-									<h5>Left &amp; Right</h5>
-									<p><span class="image left"><img src="images/pic04.jpg" alt="" /></span>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo, tempus sed finibus eget, fringilla quis risus. Maecenas et lorem quis sem varius sagittis et a est. Maecenas iaculis iaculis sem. Donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien. Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo, tempus sed finibus eget, fringilla quis risus. Maecenas et lorem quis sem varius sagittis et a est. Maecenas iaculis iaculis sem. Donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
-									<p><span class="image right"><img src="images/pic05.jpg" alt="" /></span>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius. Nam sapien ante, varius in pulvinar vitae, rhoncus id massa. Donec varius ex in mauris ornare, eget euismod urna egestas. Etiam lacinia tempor ipsum, sodales porttitor justo. Aliquam dolor quam, semper in tortor eu, volutpat efficitur quam. Fusce nec fermentum nisl. Aenean erat diam, tempus aliquet erat. Etiam iaculis nulla ipsum, et pharetra libero rhoncus ut. Phasellus rutrum cursus velit, eget condimentum nunc blandit vel. In at pulvinar lectus. Morbi diam ante, vulputate et imperdiet eget, fermentum non dolor. Ut eleifend sagittis tincidunt. Sed viverra commodo mi, ac rhoncus justo. Duis neque ligula, elementum ut enim vel, posuere finibus justo. Vivamus facilisis maximus nibh quis pulvinar. Quisque hendrerit in ipsum id tellus facilisis fermentum. Proin mauris dui.</p>
-								</section>
-
+        
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    
+    
+    
+    
+    
+    
+    
+    
+     <script type="text/javascript">
+     var cnt = 0;
+ 	<%if (info != null) {%>
+	<%
+	
+	ArrayList<String> list=dao.CS5(info.getId());%>
+	var CS5=[];
+	<% for(int i=0; i<list.size(); i++){%>
+	CS5.push('<%= list.get(i) %>');
+	<% } %>
+		rud = CS5[CS5.length-1];
+		document.write("<th scope='row'>경추</th>")
+	for(var i=CS5.length; i>(CS5.length-5); i--){
+		document.write("<td>")
+		document.write(CS5[i-1])
+		document.write("</td>")
+		cnt += parseInt(CS5[i-1]);
+	}
+		document.write("<th scope='cols'>"+cnt+"회</th>")
+<%	}%>
+	
+			
+		
+	</script>
+    
+    
+    </tr>
+    <tr>
+       
+        <script type="text/javascript">
+        var cnt1=0;
+	<%if (info != null) {%>
+		<%
+		
+		ArrayList<String> list=dao.TS5(info.getId());%>
+		var TS5=[];
+		<% for(int i=0; i<list.size(); i++){%>
+		TS5.push('<%= list.get(i) %>');
+		<% } %>
+			gbd = TS5[TS5.length-1];
+			document.write("<th scope='row'>흉추</th>")
+			
+		for(var i=bdate.length; i>(bdate.length-5); i--){
+			document.write("<td>")
+			document.write(TS5[i-1])
+			document.write("</td>")
+			cnt1 += parseInt(TS5[i-1]);
+		}
+			document.write("<th scope='cols'>"+cnt1+"회</th>")
+			
+<%	}%>
+	
+			
+		
+	</script>
+    </tr>
+    <tr>
+        <script type="text/javascript">
+        var cnt2 =0;
+	<%if (info != null) {%>
+		<% 
+		
+		ArrayList<String> list=dao.LUMBER5(info.getId());%>
+		var LUMBER5=[];
+		<% for(int i=0; i<list.size(); i++){%>  
+		LUMBER5.push('<%= list.get(i) %>');
+		<% } %>
+			dy = LUMBER5[LUMBER5.length-1];
+			document.write("<th scope='row'>요추</th>")
+		for(var i=LUMBER5.length; i>(LUMBER5.length-5); i--){
+			document.write("<td>")
+			document.write(LUMBER5[i-1])
+			document.write("</td>")
+			cnt2 += parseInt(LUMBER5[i-1]);
+		}
+			document.write("<th scope='cols'>"+cnt2+"회</th>")
+<%	}%>
+	
+			
+		 
+	</script>
+    </tr>
+    <tr>
+        
+        <script type="text/javascript">
+        var cnt3 = 0;
+	<%if (info != null) {%>
+		<%
+		
+		ArrayList<String> list=dao.LS5(info.getId());%>
+		var LS5=[];
+		<% for(int i=0; i<list.size(); i++){%>
+		LS5.push('<%= list.get(i) %>');
+		<% } %>
+			Lrus = LS5[LS5.length-1];
+			document.write("<th scope='row'>견갑골(좌)</th>")
+		for(var i=LS5.length; i>(LS5.length-5); i--){
+			document.write("<td>")
+			document.write(LS5[i-1])
+			document.write("</td>")
+			cnt3 += parseInt(LS5[i-1]);
+		}
+			document.write("<th scope='cols'>"+cnt3+"회</th>")
+<%	}%>
+	
+			
+		
+	</script>
+    </tr>
+    <tr>
+        <script type="text/javascript">
+        var cnt4 = 0;
+	<%if (info != null) {%>
+		<%
+		
+		ArrayList<String> list=dao.RS5(info.getId());%>
+		var RS5=[];
+		<% for(int i=0; i<list.size(); i++){%>
+		RS5.push('<%= list.get(i) %>');
+		<% } %>
+			Rrus = RS5[RS5.length-1]
+			document.write("<th scope='row'>견갑골(우)</th>")
+		for(var i=RS5.length; i>(RS5.length-5); i--){
+			document.write("<td>")
+			document.write(RS5[i-1])
+			document.write("</td>")
+			cnt4 += parseInt(RS5[i-1]);
+		}
+			document.write("<th scope='cols'>"+cnt4+"회</th>")
+<%	}%>
+	
+			
+		
+	</script>
+    </tr>
+    </tbody>
+</table>
+							
+							
+							
+							
+							
+							
+							
 							</div>
 						</section>
 					</article>
@@ -370,6 +293,43 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 			</div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -378,6 +338,362 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+	<script>
+	//파이차트
+	var randomScalingFactor = function() {
+		return Math.round(Math.random() * 100);
+	};
+	var config = {
+		type: 'doughnut',
+		data: {
+			datasets: [{
+				data: [
+					rud,
+					gbd,
+					dy,
+					Lrus,
+					Rrus,
+				],
+				backgroundColor: [
+					window.chartColors.red,
+					window.chartColors.orange,
+					window.chartColors.yellow,
+					window.chartColors.green,
+					window.chartColors.blue,
+				],
+				label: 'Dataset 1'
+			}],
+			labels: [
+				'경추',
+				'흉추',
+				'요추',
+				'견갑골(좌)',
+				'견갑골(우)'
+			]
+		},
+		options: {
+			responsive: true,
+			legend: {
+				position: 'top',
+			},
+			title: {
+				display: true,
+				text: '최근 하루 통계치'
+			},
+			animation: {
+				animateScale: true,
+				animateRotate: true
+			}
+		}
+	};
+	window.onload = function() {
+		var ctx = document.getElementById('chart-area').getContext('2d');
+		window.myDoughnut = new Chart(ctx, config);
+	};
+	//파이차트 끝
+	//막대차트?>
+	function generateData() {
+			var unit = document.getElementById('unit').value;
+			function unitLessThanDay() {
+				return unit === 'second' || unit === 'minute' || unit === 'hour';
+			}
+			function beforeNineThirty(date) {
+				return date.hour() < 9 || (date.hour() === 9 && date.minute() < 30);
+			}
+			// Returns true if outside 9:30am-4pm on a weekday
+			function outsideMarketHours(date) {
+				if (date.isoWeekday() > 5) {
+					return true;
+				}
+				if (unitLessThanDay() && (beforeNineThirty(date) || date.hour() > 16)) {
+					return true;
+				}
+				return false;
+			}
+			function randomNumber(min, max) {
+				return Math.random() * (max - min) + min;
+			}
+			function randomBar(date, lastClose) {
+				var open = randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
+				var close = randomNumber(open * 0.95, open * 1.05).toFixed(2);
+				return {
+					t: date.valueOf(),
+					y: close
+				};
+			}
+			var date = moment('Jan 01 2020', 'MMM DD YYYY');
+			var now = moment();
+			var data = [];
+			var lessThanDay = unitLessThanDay();
+			for (; data.length < 600 && date.isBefore(now); date = date.clone().add(1, unit).startOf(unit)) {
+				if (outsideMarketHours(date)) {
+					if (!lessThanDay || !beforeNineThirty(date)) {
+						date = date.clone().add(date.isoWeekday() >= 5 ? 8 - date.isoWeekday() : 1, 'day');
+					}
+					if (lessThanDay) {
+						date = date.hour(9).minute(30).second(0);
+					}
+				}
+				data.push(randomBar(date, data.length > 0 ? data[data.length - 1].y : 30));
+			}
+			return data;
+		}
+		var ctx = document.getElementById('chart1').getContext('2d');
+		ctx.canvas.width = 1000;
+		ctx.canvas.height = 300;
+		var color = Chart.helpers.color;
+		var cfg = {
+			data: {
+				datasets: [{
+					label: 'CHRT - Chart.js Corporation',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.red,
+					data: generateData(),
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}]
+			},
+			options: {
+				animation: {
+					duration: 0
+				},
+				scales: {
+					xAxes: [{
+						type: 'time',
+						distribution: 'series',
+						offset: true,
+						ticks: {
+							major: {
+								enabled: true,
+								fontStyle: 'bold'
+							},
+							source: 'data',
+							autoSkip: true,
+							autoSkipPadding: 75,
+							maxRotation: 0,
+							sampleSize: 100
+						},
+						afterBuildTicks: function(scale, ticks) {
+							var majorUnit = scale._majorUnit;
+							var firstTick = ticks[0];
+							var i, ilen, val, tick, currMajor, lastMajor;
+							val = moment(ticks[0].value);
+							if ((majorUnit === 'minute' && val.second() === 0)
+									|| (majorUnit === 'hour' && val.minute() === 0)
+									|| (majorUnit === 'day' && val.hour() === 9)
+									|| (majorUnit === 'month' && val.date() <= 3 && val.isoWeekday() === 1)
+									|| (majorUnit === 'year' && val.month() === 0)) {
+								firstTick.major = true;
+							} else {
+								firstTick.major = false;
+							}
+							lastMajor = val.get(majorUnit);
+							for (i = 1, ilen = ticks.length; i < ilen; i++) {
+								tick = ticks[i];
+								val = moment(tick.value);
+								currMajor = val.get(majorUnit);
+								tick.major = currMajor !== lastMajor;
+								lastMajor = currMajor;
+							}
+							return ticks;
+						}
+					}],
+					yAxes: [{
+						gridLines: {
+							drawBorder: false
+						},
+						scaleLabel: {
+							display: true,
+							labelString: 'Closing price ($)'
+						}
+					}]
+				},
+				tooltips: {
+					intersect: false,
+					mode: 'index',
+					callbacks: {
+						label: function(tooltipItem, myData) {
+							var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+							if (label) {
+								label += ': ';
+							}
+							label += parseFloat(tooltipItem.value).toFixed(2);
+							return label;
+						}
+					}
+				}
+			}
+		};
+		var chart = new Chart(ctx, cfg);
+		document.getElementById('update').addEventListener('click', function() {
+			var type = document.getElementById('type').value;
+			var dataset = chart.config.data.datasets[0];
+			dataset.type = type;
+			dataset.data = generateData();
+			chart.update();
+		});
+	//막대차트 끝
+	//막대차트?>
+	function generateData() {
+			var unit = document.getElementById('unit').value;
+			function unitLessThanDay() {
+				return unit === 'second' || unit === 'minute' || unit === 'hour';
+			}
+			function beforeNineThirty(date) {
+				return date.hour() < 9 || (date.hour() === 9 && date.minute() < 30);
+			}
+			// Returns true if outside 9:30am-4pm on a weekday
+			function outsideMarketHours(date) {
+				if (date.isoWeekday() > 5) {
+					return true;
+				}
+				if (unitLessThanDay() && (beforeNineThirty(date) || date.hour() > 16)) {
+					return true;
+				}
+				return false;
+			}
+			function randomNumber(min, max) {
+				return Math.random() * (max - min) + min;
+			}
+			function randomBar(date, lastClose) {
+				var open = randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
+				var close = randomNumber(open * 0.95, open * 1.05).toFixed(2);
+				return {
+					t: date.valueOf(),
+					y: close
+				};
+			}
+			var date = moment('Jan 01 2020', 'MMM DD YYYY');
+			var now = moment();
+			var data = [];
+			var lessThanDay = unitLessThanDay();
+			for (; data.length < 600 && date.isBefore(now); date = date.clone().add(1, unit).startOf(unit)) {
+				if (outsideMarketHours(date)) {
+					if (!lessThanDay || !beforeNineThirty(date)) {
+						date = date.clone().add(date.isoWeekday() >= 5 ? 8 - date.isoWeekday() : 1, 'day');
+					}
+					if (lessThanDay) {
+						date = date.hour(9).minute(30).second(0);
+					}
+				}
+				data.push(randomBar(date, data.length > 0 ? data[data.length - 1].y : 30));
+			}
+			return data;
+		}
+		var ctx = document.getElementById('chart1').getContext('2d');
+		ctx.canvas.width = 1000;
+		ctx.canvas.height = 300;
+		var color = Chart.helpers.color;
+		var cfg = {
+			data: {
+				datasets: [{
+					label: 'CHRT - Chart.js Corporation',
+					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.red,
+					data: generateData(),
+					type: 'line',
+					pointRadius: 0,
+					fill: false,
+					lineTension: 0,
+					borderWidth: 2
+				}]
+			},
+			options: {
+				animation: {
+					duration: 0
+				},
+				scales: {
+					xAxes: [{
+						type: 'time',
+						distribution: 'series',
+						offset: true,
+						ticks: {
+							major: {
+								enabled: true,
+								fontStyle: 'bold'
+							},
+							source: 'data',
+							autoSkip: true,
+							autoSkipPadding: 75,
+							maxRotation: 0,
+							sampleSize: 100
+						},
+						afterBuildTicks: function(scale, ticks) {
+							var majorUnit = scale._majorUnit;
+							var firstTick = ticks[0];
+							var i, ilen, val, tick, currMajor, lastMajor;
+							val = moment(ticks[0].value);
+							if ((majorUnit === 'minute' && val.second() === 0)
+									|| (majorUnit === 'hour' && val.minute() === 0)
+									|| (majorUnit === 'day' && val.hour() === 9)
+									|| (majorUnit === 'month' && val.date() <= 3 && val.isoWeekday() === 1)
+									|| (majorUnit === 'year' && val.month() === 0)) {
+								firstTick.major = true;
+							} else {
+								firstTick.major = false;
+							}
+							lastMajor = val.get(majorUnit);
+							for (i = 1, ilen = ticks.length; i < ilen; i++) {
+								tick = ticks[i];
+								val = moment(tick.value);
+								currMajor = val.get(majorUnit);
+								tick.major = currMajor !== lastMajor;
+								lastMajor = currMajor;
+							}
+							return ticks;
+						}
+					}],
+					yAxes: [{
+						gridLines: {
+							drawBorder: false
+						},
+						scaleLabel: {
+							display: true,
+							labelString: 'Closing price ($)'
+						}
+					}]
+				},
+				tooltips: {
+					intersect: false,
+					mode: 'index',
+					callbacks: {
+						label: function(tooltipItem, myData) {
+							var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+							if (label) {
+								label += ': ';
+							}
+							label += parseFloat(tooltipItem.value).toFixed(2);
+							return label;
+						}
+					}
+				}
+			}
+		};
+		var chart = new Chart(ctx, cfg);
+		document.getElementById('update').addEventListener('click', function() {
+			var type = document.getElementById('type').value;
+			var dataset = chart.config.data.datasets[0];
+			dataset.type = type;
+			dataset.data = generateData();
+			chart.update();
+		});
+	//막대차트 끝
+	</script>
 	</body>
 </html>

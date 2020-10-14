@@ -6,22 +6,31 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" href="assets/css/main.css" />
-</head>
 <style>
-	.a{
-		margin-left: 100px;
-		margin-top: 50px;
+	#idpw {
+		margin-left:20%;
+		margin-top:13%
 	}
+
 	#c {
 		width: 300px;
 	}
+	#loginjoin {
+		margin-left:20%;
+	}
 </style>
-<body class="is-preload">
-	<form action="loginservice" method="post" class="a">
-	ID<input id="c" type="text" name="ID"><br> 
-	PW<input id="c" type="password" name="PW"><br> 
-	<input type="submit" value="로그인">
-	<a href="join.jsp" class="button special">회원 가입</a>
+</head>
+
+<body>
+	<form action="loginservice" method="post">
+		<div id="idpw">
+			ID<input id="c" type="text" name="ID"><br> 
+			PW<input id="c" type="password" name="PW"><br> 
+		</div>
+		<div id="loginjoin">
+			<span><input type="submit" value="로그인"></span>
+			<span style="position:relative; margin-right: 0px"><a href="join.jsp" class="button special">회원 가입</a></span>
+		</div>
 	</form>
 
 </body>
