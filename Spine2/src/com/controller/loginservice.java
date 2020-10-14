@@ -13,11 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.model.MemDAO;
 import com.model.MemDTO;
-<<<<<<< HEAD
-=======
-import com.model.MemDAO;
-import com.model.MemDTO;
->>>>>>> refs/remotes/origin/master
+
 
 @WebServlet("/loginservice")
 public class loginservice extends HttpServlet {
@@ -37,11 +33,10 @@ public class loginservice extends HttpServlet {
 			out.println("<script>opener.location.reload();</script>");
 			out.println("<script>window.close('loginservice') </script>");
 		}else {
-<<<<<<< HEAD
+
 			out.println("<script>alert('하이'); location.href='login.jsp';</script>");
-=======
 			out.println("<script>alert('로그인 실패'); location.href='log.jsp';</script>");
->>>>>>> refs/remotes/origin/master
+
 			out.flush();
 		}
 		

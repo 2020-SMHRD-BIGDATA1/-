@@ -133,33 +133,7 @@ public class MemDAO {
 		}
 		return dto;
 	}
-	
-<<<<<<< HEAD
-=======
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
->>>>>>> refs/remotes/origin/master
+
 	public ArrayList<String> BDATE(String id) {
 		ArrayList<String> list=new ArrayList<String>();
 		try {
@@ -170,8 +144,7 @@ public class MemDAO {
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				list.add(rs.getString("TM"));
-<<<<<<< HEAD
-=======
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -189,98 +162,6 @@ public class MemDAO {
 	
 	
 	
-	
-	public ArrayList<String> CS5(String id) {
-		ArrayList<String> list=new ArrayList<String>();
-		try {
-			getConnection();
-			String sql = "select CSPINE from CS5 where ID=?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-				list.add(rs.getString("CSPINE"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return list;
-	}
-	public ArrayList<String> TS5(String id) {
-		ArrayList<String> list=new ArrayList<String>();
-		try {
-			getConnection();
-			String sql = "SELECT TSPINE FROM TS5 where ID=?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-				list.add(rs.getString("TSPINE"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return list;
-	}
-	public ArrayList<String> LUMBER5(String id) {
-		ArrayList<String> list=new ArrayList<String>();
-		try {
-			getConnection();
-			String sql = "SELECT LUMBER FROM LUMBER5 where ID=?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-				list.add(rs.getString("LUMBER"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return list;
-	}
-	public ArrayList<String> RS5(String id) {
-		ArrayList<String> list=new ArrayList<String>();
-		try {
-			getConnection();
-			String sql = "SELECT RSHOULDER FROM RS5 where ID=?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-				list.add(rs.getString("RSHOULDER"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return list;
-	}
-	public ArrayList<String> LS5(String id) {
-		ArrayList<String> list=new ArrayList<String>();
-		try {
-			getConnection();
-			String sql = "SELECT LSHOULDER FROM LS5 where ID=?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-				list.add(rs.getString("LSHOULDER"));
->>>>>>> refs/remotes/origin/master
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return list;
-	}
 	
 	public ArrayList<String> CS5(String id) {
 		ArrayList<String> list=new ArrayList<String>();
